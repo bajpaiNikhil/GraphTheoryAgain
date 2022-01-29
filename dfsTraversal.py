@@ -1,4 +1,4 @@
-
+# iterative
 def dfsTraversalWeHave(graph, startingNode):
     stack = [startingNode]
     res = ""
@@ -6,7 +6,17 @@ def dfsTraversalWeHave(graph, startingNode):
         top = stack.pop()
         res += top
         for neighbour in graph[top]:
-            stack.extend(neighbour)
+            stack.append(neighbour)
+    return res
+
+def dfsTraversalRecursive(graph , startingNode):
+    res = ""
+
+    res+= startingNode
+
+    for neighbour in graph[startingNode]:
+        res += dfsTraversalRecursive(graph , neighbour)
+
     return res
 graph = {
     "a": ["c", "b"],
@@ -17,3 +27,4 @@ graph = {
     "f": []
 }
 print(dfsTraversalWeHave(graph, "a"))
+print(dfsTraversalRecursive(graph , "a"))
