@@ -14,12 +14,11 @@ def findPathIterative(graph, source, destination):
     res = ""
     while len(stack) > 0:
         top = stack.pop()
+        if top == destination:
+            return True
         res += top
         for neighbour in graph[top]:
             stack.append(neighbour)
-            if destination == neighbour:
-                return True
-
     return False
 
 def findPathRecursive(graph , source , destination):
@@ -29,5 +28,5 @@ def findPathRecursive(graph , source , destination):
     for neighbour in graph[source]:
         return findPathRecursive(graph , neighbour , destination)
 
-print(findPathIterative(graph, "f", "g"))
-print(findPathRecursive(graph , "f" , "g"))
+print(findPathIterative(graph, "f", "f"))
+print(findPathRecursive(graph , "f" , "f"))
