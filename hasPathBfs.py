@@ -6,11 +6,10 @@ def findPathBfs(graph , source , destination):
 
     while(len(queue) > 0 ):
         front = queue.pop(0)
-
+        if front == destination:
+            return True
         for neighbour in graph[front]:
             queue.append(neighbour)
-            if neighbour == destination:
-                return True
     return False
 
 graph = {
@@ -22,4 +21,4 @@ graph = {
     "k": []
 }
 
-print(findPathBfs(graph , source= "f" , destination = "j"))
+print(findPathBfs(graph , source= "f" , destination = "f"))
